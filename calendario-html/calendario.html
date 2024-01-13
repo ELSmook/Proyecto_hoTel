@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario con Reservas</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .current-day {
+            background-color: #a0d8f1;
+        }
+
+        .event {
+            background-color: #b8e994;
+        }
+
+        #reservations {
+            margin-top: 20px;
+        }
+
+        #reservations table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #reservations th, #reservations td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+
+    <script src="inicio_script.js"></script>
+</head>
+<body>
+
+    <h2>Calendario con Reservas</h2>
+
+    <div>
+        <button onclick="previousMonth()">Mes Anterior</button>
+        <span id="currentMonthYear"></span>
+        <button onclick="nextMonth()">Mes Siguiente</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+                <th>Sábado</th>
+                <th>Domingo</th>
+            </tr>
+        </thead>
+        <tbody id="calendarBody">
+            <!-- Los días se generarán dinámicamente aquí -->
+        </tbody>
+    </table>
+
+    <div id="reservations">
+        <h3>Reservas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Día de inicio</th>
+                    <th>Día de fin</th>
+                    <th>Nombre del reservante</th>
+                </tr>
+            </thead>
+            <tbody id="reservationsBody">
+                <!-- Las reservas se mostrarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+       
+    </script>
+
+</body>
+</html>

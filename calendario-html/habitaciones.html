@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="sp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitaciones</title>
+    <link rel="stylesheet" href="inicio_style.css">
+<input type="checkbox" id="menu" />
+<label for="menu" class="menu">
+	<span></span>
+	<span></span>
+	<span></span>
+</label>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .current-day {
+        background-color: #a0d8f1;
+    }
+
+    .event {
+        background-color: #b8e994;
+    }
+
+    #reservations {
+        margin-top: 20px;
+    }
+
+    #reservations table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #reservations th, #reservations td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+<style>
+    #roomList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #roomList li {
+        margin-bottom: 10px;
+    }
+</style>
+<script>
+    function addRoom() {
+        const roomList = document.getElementById("roomList");
+        const li = document.createElement("li");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Nueva habitación";
+        
+        const editButton = document.createElement("button");
+        editButton.textContent = "Editar";
+        editButton.onclick = () => editRoom(li);
+
+        const saveButton = document.createElement("button");
+        saveButton.textContent = "Guardar";
+        saveButton.onclick = () => saveRoom(li);
+
+        const cancelButton = document.createElement("button");
+        cancelButton.textContent = "Cancelar";
+        cancelButton.onclick = () => cancelEdit(li);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Eliminar";
+        deleteButton.onclick = () => deleteRoom(li);
+
+        li.appendChild(input);
+        li.appendChild(editButton);
+        li.appendChild(saveButton);
+        li.appendChild(cancelButton);
+        li.appendChild(deleteButton);
+
+        roomList.appendChild(li);
+    }
+
+    function editRoom(li) {
+        const input = li.querySelector("input");
+        const editButton = li.querySelector("button");
+        const saveButton = li.querySelector("button:nth-child(3)");
+        const cancelButton = li.querySelector("button:nth-child(4)");
+        const deleteButton = li.querySelector("button:last-child");
+
+        input.disabled = false;
+        editButton.style.display = "none";
+        saveButton.style.display = "inline-block";
+        cancelButton.style.display = "inline-block";
+        deleteButton.style.display = "none";
+    }
+
+    function saveRoom(li) {
+        const input = li.querySelector("input");
+        const editButton = li.querySelector("button");
+        const saveButton = li.querySelector("button:nth-child(3)");
+        const cancelButton = li.querySelector("button:nth-child(4)");
+        const deleteButton = li.querySelector("button:last-child");
+
+        input.disabled = true;
+        editButton.style.display = "inline-block";
+        saveButton.style.display = "none";
+        cancelButton.style.display = "none";
+        deleteButton.style.display = "inline-block";
+    }
+
+    function cancelEdit(li) {
+        const input = li.querySelector("input");
+        const editButton = li.querySelector("button");
+        const saveButton = li.querySelector("button:nth-child(3)");
+        const cancelButton = li.querySelector("button:nth-child(4)");
+        const deleteButton = li.querySelector("button:last-child");
+
+        input.disabled = true;
+        editButton.style.display = "inline-block";
+        saveButton.style.display = "none";
+        cancelButton.style.display = "none";
+        deleteButton.style.display = "inline-block";
+    }
+
+    function deleteRoom(li) {
+        if (confirm("¿Deseas eliminar esta habitación?")) {
+            const roomList = document.getElementById("roomList");
+            roomList.removeChild(li);
+        }
+    }
+</script>
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+            <li><a href="inicio.html">Reservas</a></li>
+            <li><a href="#">Habitaciones</a></li>
+            <li><a href="apertura-cierredecaja.html">Apertura/Cierre de Caja</a></li>
+            <li><a href="#">Facturación al Cliente</a></li>
+            <li><a href="#">Facturación a Medios de Comunicación</a></li>
+        </ul>
+    </nav>
+    
+    
+    <main>
+        <section>
+            <div class="container">
+                <ul id="roomList"></ul>
+                <button onclick="addRoom()">Agregar Habitación</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="logo">
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="empleados.html">Works</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <div class="secondary-links">
+                <ul>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            
+                <ul class="social">
+                    <li><a href="#">
+                        <i class="fa fa-github"></i>
+                    </a></li>
+                    <li><a href="#">
+                        <i class="fa fa-twitter"></i>
+                    </a></li>
+                    <li><a href="#">
+                        <i class="fa fa-codepen"></i>
+                    </a></li>
+                </ul>
+            </div>
+        </footer> 
+    </main>
+   
+</body>
+</html>
